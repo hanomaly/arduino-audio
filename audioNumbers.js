@@ -49,47 +49,9 @@ function getAudioAsNumbers(){
 
 };
 
-// function copyText() {
-//
-//     var doc = document
-//         , text = doc.getElementById("result")
-//         , range, selection
-//     ;
-//     if (doc.body.createTextRange) {
-//         range = document.body.createTextRange();
-//         range.moveToElementText(text);
-//         range.select();
-//     } else if (window.getSelection) {
-//         selection = window.getSelection();
-//         range = document.createRange();
-//         range.selectNodeContents(text);
-//         selection.removeAllRanges();
-//         selection.addRange(range);
-//     }
-// }
-
-// $(function() {
-//     $('#copyText').click(function() {
-//         SelectText('selectThisText');
-//     });
-//    $('#selectThisText').click(function() {
-//         SelectText('selectThisText');
-//     });
-// });
-
 function copyText() {
-  /* Get the text field */
   var copyText = document.getElementById("result");
-
-  /* Select the text field */
   copyText.focus();
   copyText.select();
   document.execCommand('copy');
-  //copyText.setSelectionRange(0, 99999); /*For mobile devices*/
-
-  /* Copy the text inside the text field */
-  //document.execCommand("copy");
-
-  /* Alert the copied text */
-  //alert("Copied the text: " + copyText.value);
 };
