@@ -33,9 +33,6 @@ function getAudioAsNumbers(){
         end = data.length - end;
         end = Math.min(end, 30000);
 
-        console.log(end)
-        console.log(data.length);
-
         const scale = (num, in_min, in_max, out_min, out_max) => {
           return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
         };
@@ -46,7 +43,6 @@ function getAudioAsNumbers(){
           result += n + ", ";
         };
 
-        console.log(i)
         result = result.slice(0, -2);
 
         document.getElementById("result").innerHTML = result;
