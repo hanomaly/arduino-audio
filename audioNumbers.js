@@ -25,16 +25,28 @@ function getAudioAsNumbers(){
           if (Math.abs(data[start]) / maxval > 0.01){break};
         };
 
+        var rev = data.reverse();
+        var end;
+        for (end = 0; end < data.length; end++) {
+          if (Math.abs(rev[end]) / maxval > 0.01){break};
+        };
+        end = data.length - end;
+        end = Math.min(end, 30000);
+
+        console.log(end)
+        console.log(data.length);
+
         const scale = (num, in_min, in_max, out_min, out_max) => {
           return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
         };
 
         var result = "";
-        for (i = start; i < data.length && i - start < 30000; i++) {
+        for (var i = start; (i < data.length) && (i < end); i++) {
           n = Math.min(Math.max( Math.floor(scale(data[i], -maxval, maxval, 0, 256)) , 0), 255);
           result += n + ", ";
         };
 
+        console.log(i)
         result = result.slice(0, -2);
 
         document.getElementById("result").innerHTML = result;
