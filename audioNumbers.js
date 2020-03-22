@@ -1,5 +1,5 @@
-function getAudioAsNumbers(){
 
+function getAudioAsNumbers(){
   var selectedFile = document.getElementById("myFile").files[0];
   var tp = selectedFile.type;
 
@@ -9,20 +9,27 @@ function getAudioAsNumbers(){
     reader.onload = function(e) {
       var arrayBuffer = e.target.result;
 
-      audioCtx = new window.AudioContext();
+      audioCtx = new window.AudioContext({
+        sampleRate: 8000
+      });
       audioBuffer = audioCtx.decodeAudioData(arrayBuffer, function(buffer) {
         data = buffer.getChannelData(0);
 
+        console.log(audioCtx.sampleRate);
         var maxval = 0;
         for (i = 0; i < data.length; i++) {
           if (Math.abs(data[i]) > maxval) {maxval = data[i]};
         }
+
+        console.log(maxval);
 
         var start;
         for (start = 0; start < data.length; start++) {
           if (Math.abs(data[start]) / maxval > 0.01){break};
         };
 
+        console.log(start);
+        console.log(data.length);
         const scale = (num, in_min, in_max, out_min, out_max) => {
           return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
         };
