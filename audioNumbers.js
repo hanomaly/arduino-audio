@@ -38,7 +38,7 @@ function getAudioAsNumbers(){
         };
 
         var result = "";
-        for (var i = start; (i < data.length) && (i < end); i++) {
+        for (var i = start; i < end; i++) {
           n = Math.min(Math.max( Math.floor(scale(data[i], -maxval, maxval, 0, 256)) , 0), 255);
           result += n + ", ";
         };
