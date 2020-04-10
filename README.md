@@ -1,4 +1,4 @@
 # arduino-audio
-Copy a numerical array of your audio file to be used to play audio directly from arduino.
+Takes an mp3 audio file as input, then turns that file into an arduino readable numerical array which you can then copy to your clipboard to be pasted into an arduino sketch using the PCM library.
 
 Based on the Processing code by [damellis](https://github.com/damellis/EncodeAudio)
